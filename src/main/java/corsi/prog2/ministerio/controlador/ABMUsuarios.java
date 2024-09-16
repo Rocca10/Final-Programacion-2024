@@ -15,14 +15,14 @@ public class ABMUsuarios {
 
     @Autowired
     RepositorioDeUsuarios ru;
-    
+
     @PostMapping("/nuevo-usuario")
     public String nuevoUsuario(final RedirectAttributes redirectAttributes,
-            @RequestParam(name = "codigo") String codigo,
-            @RequestParam(name = "nombre") String nombre,
-            @RequestParam(name = "password") String password,
-            @RequestParam(name = "rol") String rol,
-            @RequestParam(name = "admin") String admin) {
+                               @RequestParam(name = "codigo") String codigo,
+                               @RequestParam(name = "nombre") String nombre,
+                               @RequestParam(name = "password") String password,
+                               @RequestParam(name = "rol") String rol,
+                               @RequestParam(name = "admin") String admin) {
 
         if (rol.equals("Vigilante")) {
             ru.saveAndFlush(new Vigilante(codigo, nombre, password));
@@ -37,12 +37,12 @@ public class ABMUsuarios {
 
     @PostMapping("/editar-borrar-usuario")
     public String editarBorrarUsuario(final RedirectAttributes redirectAttributes,
-            @RequestParam(name = "codigo") String codigo,
-            @RequestParam(name = "nombre") String nombre,
-            @RequestParam(name = "password") String password,
-            @RequestParam(name = "rol") String rol,
-            @RequestParam(name = "admin") String admin,
-            @RequestParam(name = "accion") String accion) {
+                                      @RequestParam(name = "codigo") String codigo,
+                                      @RequestParam(name = "nombre") String nombre,
+                                      @RequestParam(name = "password") String password,
+                                      @RequestParam(name = "rol") String rol,
+                                      @RequestParam(name = "admin") String admin,
+                                      @RequestParam(name = "accion") String accion) {
         if(accion.equals("Borrar")) {
             ru.deleteById(codigo);
         } else if(accion.equals("Editar")){
@@ -56,5 +56,5 @@ public class ABMUsuarios {
         redirectAttributes.addFlashAttribute("usuario", usuario);
         return "redirect:/login#users";
     }
-    
+
 }

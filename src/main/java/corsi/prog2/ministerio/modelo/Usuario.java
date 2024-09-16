@@ -27,7 +27,7 @@ public class Usuario implements Serializable {
 
     @Column(updatable = false, insertable = false)
     private String rol;
-    
+
     public Usuario() {
     }
 

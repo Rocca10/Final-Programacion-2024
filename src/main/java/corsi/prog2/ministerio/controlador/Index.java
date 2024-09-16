@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class Index {
 
     @GetMapping("/")
-    public String loginForm() {
+    public String index() {
         return "index";
     }
 }

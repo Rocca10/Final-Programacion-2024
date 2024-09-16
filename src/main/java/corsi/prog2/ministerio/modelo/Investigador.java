@@ -1,17 +1,16 @@
 package corsi.prog2.ministerio.modelo;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-@Entity(name = "Investigador")
-@DiscriminatorValue("Investigador")
+@Entity
 public class Investigador extends Usuario {
 
     public Investigador() {
+        super();
     }
 
     public Investigador(String codigo, String nombre, String password) {
         super(codigo, nombre, password);
     }
-    
+
 }

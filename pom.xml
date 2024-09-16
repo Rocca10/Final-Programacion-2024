@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>corsi.prog2</groupId>
-	<artifactId>bodegon</artifactId>
+	<artifactId>ministerio</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>bodegon</name>
 	<description>Bodegon project</description>
