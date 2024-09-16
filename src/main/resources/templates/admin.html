@@ -218,36 +218,40 @@
             </header>
 
             <!-- Lista de Contratos -->
-            <div th:each="contrato : ${contratos}">
-                <form th:action="@{/editar-borrar-contrato}" method="post">
-                    <input type="hidden" name="admin" th:value="${usuario.codigo}" />
-                    <input type="hidden" name="id" th:value="${contrato.id}" />
-                    <div class="row">
-                        <div class="col-2 col-12-small">
-                            <input type="text" name="codigo" th:value="${contrato.codigo}" required />
+            <div style="background-color: #f9f9f9; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin-top: 20px;">
+                <div th:each="contrato : ${contratos}" style="margin-bottom: 20px;">
+                    <form th:action="@{/editar-borrar-contrato}" method="post">
+                        <input type="hidden" name="admin" th:value="${usuario.codigo}" />
+                        <input type="hidden" name="id" th:value="${contrato.id}" />
+                        <div class="row" style="display: flex; align-items: center;">
+                            <div class="col-2 col-12-small" style="flex: 1; margin-right: 10px;">
+                                <input type="text" name="codigo" th:value="${contrato.codigo}" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" />
+                            </div>
+                            <div class="col-2 col-12-small" style="flex: 1; margin-right: 10px;">
+                                <input type="number" name="edad" th:value="${contrato.edad}" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" />
+                            </div>
+                            <div class="col-3 col-12-small" style="flex: 1; margin-right: 10px;">
+                                <input type="date" name="fechaDeContratacion" th:value="${contrato.fechaDeContratacion}" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" />
+                            </div>
+                            <div class="col-2 col-12-small" style="flex: 1; margin-right: 10px;">
+                                <select name="tieneArma" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                                    <option th:value="true" th:selected="${contrato.tieneArma}">Sí</option>
+                                    <option th:value="false" th:selected="!${contrato.tieneArma}">No</option>
+                                </select>
+                            </div>
+                            <div class="col-1 col-12-small" style="flex-grow: 1; max-width: 100px;">
+                                <input type="submit" name="accion" value="Editar" style="padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: background-color 0.3s ease; margin-right: 10px;" />
+                            </div>
+                            <div class="col-1 col-12-small" style="flex-grow: 1; max-width: 100px;">
+                                <input type="submit" name="accion" value="Borrar" style="padding: 10px; background-color: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: background-color 0.3s ease;" />
+                            </div>
                         </div>
-                        <div class="col-2 col-12-small">
-                            <input type="number" name="edad" th:value="${contrato.edad}" required />
-                        </div>
-                        <div class="col-3 col-12-small">
-                            <input type="date" name="fechaDeContratacion" th:value="${contrato.fechaDeContratacion}" required />
-                        </div>
-                        <div class="col-2 col-12-small">
-                            <select name="tieneArma">
-                                <option th:value="true" th:text="'Sí'" th:selected="${contrato.tieneArma}"></option>
-                                <option th:value="false" th:text="'No'" th:selected="!${contrato.tieneArma}"></option>
-                            </select>
-                        </div>
-                        <div class="col-1 col-12-small">
-                            <input type="submit" name="accion" value="Editar" />
-                        </div>
-                        <div class="col-1 col-12-small">
-                            <input type="submit" name="accion" value="Borrar" />
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
 
+
+            <!-- Formulario para Nuevo Contrato -->
             <div style="background-color: #f9f9f9; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin-top: 20px;">
                 <form th:action="@{/nuevo-contrato}" method="post">
                     <input type="hidden" name="admin" th:value="${usuario.codigo}" />
@@ -267,6 +271,9 @@
                                 <option value="true">Sí</option>
                                 <option value="false">No</option>
                             </select>
+
+
+
                         </div>
                         <div class="col-3 col-12-medium" style="margin-bottom: 15px;">
                             <input type="submit" value="Agregar Contrato" style="width: 100%; padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: background-color 0.3s ease;" />

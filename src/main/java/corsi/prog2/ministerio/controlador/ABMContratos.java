@@ -29,6 +29,8 @@ public class ABMContratos {
         return "contratos";
     }
 
+
+
     @PostMapping("/nuevo-contrato")
     public String nuevoContrato(final RedirectAttributes redirectAttributes,
                                 @RequestParam(name = "codigo") String codigo,
