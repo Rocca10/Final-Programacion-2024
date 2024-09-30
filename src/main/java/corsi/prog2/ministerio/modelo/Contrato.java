@@ -13,20 +13,20 @@ public class Contrato implements Serializable {
     @Column(nullable = false, unique = true, insertable = false, updatable = false)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(name = "codigo", nullable = false, unique = true)
     private String codigo;
 
-    @Column(nullable = false)
+    @Column(name = "edad", nullable = false)
     private Integer edad;
 
-    @Column(nullable = false)
+    @Column(name = "fecha_de_contratacion", nullable = false) // Asegúrate de que el nombre coincida con la base de datos
     private LocalDate fechaDeContratacion;
 
-    @Column(nullable = false)
+    @Column(name = "tiene_arma", nullable = false) // Asegúrate de que el nombre coincida con la base de datos
     private Boolean tieneArma;
 
-//    // Constructor vacío (requerido por JPA)
-//    public ABMContratos() {}
+    // Constructor vacío (requerido por JPA)
+    public Contrato() {}
 
     // Getters y setters
 

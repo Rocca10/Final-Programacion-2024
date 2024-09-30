@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Controller
 public class ABMContratos {
@@ -25,9 +26,16 @@ public class ABMContratos {
 
     @GetMapping("/contratos")
     public String listarContratos(Model model) {
-        model.addAttribute("contratos", rc.findAll());
+        List<Contrato> contratos = rc.findAll();
+        System.out.println("Número de contratos encontrados: " + contratos.size()); // Depuración
+        for (Contrato contrato : contratos) {
+            System.out.println("Contrato: " + contrato.getCodigo()); // Depurar contenido
+        }
+        model.addAttribute("contratos", contratos);
         return "contratos";
     }
+
+
 
 
 

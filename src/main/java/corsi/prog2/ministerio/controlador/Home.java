@@ -24,12 +24,20 @@ public class Home {
     @Autowired
     private RepositorioDeEntidades re;
 
+    @Autowired
+    private RepositorioDeContratos rc;
+
+    @Autowired
+    private RepositorioDeDetenidos rd;
+
     private String login(Model model, Usuario usuario) {
         if (usuario != null) {
             model.addAttribute("usuario", usuario);
             model.addAttribute("usuarios", ru.findAll());
             model.addAttribute("sucursales", rs.findAll());
             model.addAttribute("entidades", re.findAll());
+            model.addAttribute("contratos", rc.findAll());
+            model.addAttribute("detenidos",rd.findAll());
             return usuario.getRol().toLowerCase();
         }
         model.addAttribute("error", "No se encontró Código/Password");
