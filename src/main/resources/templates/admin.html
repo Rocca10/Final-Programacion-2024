@@ -20,6 +20,7 @@
         <a href="#entidades" class="icon solid fa-briefcase"><span>Entidades</span></a>
         <a href="#contratos" class="icon solid fa-file-contract"><span>Contratos</span></a>
         <a href="#detenidos" class="icon solid fa-user-injured"><span>Detenidos</span></a>
+        <a href="#bandas" class="icon solid fa-users-cog"><span>Bandas</span></a>
 
     </nav>
 
@@ -339,6 +340,49 @@
                         </div>
                     </form>
                 </div>
+            </div>
+        </article>
+
+        <!-- Bandas -->
+        <article id="bandas" class="panel">
+            <header>
+                <h2>Gestión de Bandas</h2>
+            </header>
+            <div th:each="banda : ${bandas}">
+                <form action="#bandas" th:action="@{/editar-borrar-banda}" method="post">
+                    <input type="hidden" name="id" th:value="${banda.id}" />
+                    <div class="row">
+                        <div class="col-4 col-12-medium">
+                            <input type="text" name="numeroDeBanda" th:value="${banda.numeroDeBanda}" required />
+                        </div>
+                        <div class="col-4 col-12-medium">
+                            <input type="text" name="cantMiembros" th:value="${banda.cantMiembros}" required />
+                        </div>
+                        <div class="col-2 col-12-medium">
+                            <input type="submit" name="accion" value="Editar" />
+                        </div>
+                        <div class="col-2 col-12-medium">
+                            <input type="submit" name="accion" value="Borrar" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div>
+                <form action="#bandas" th:action="@{/nueva-banda}" method="post">
+                    <input type="hidden" name="admin" th:value="${usuario.codigo}" />
+                    <div class="row">
+                        <div class="col-4 col-12-medium">
+                            <input type="text" name="numeroDeBanda" placeholder="Número de Banda" required />
+                        </div>
+                        <div class="col-4 col-12-medium">
+                            <input type="text" name="cantMiembros" placeholder="Cantidad de Miembros" required />
+                        </div>
+                        <div class="col-4 col-12-medium">
+                            <input type="submit" value="Agregar" />
+                        </div>
+                    </div>
+                </form>
             </div>
         </article>
 

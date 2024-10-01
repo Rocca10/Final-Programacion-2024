@@ -30,6 +30,9 @@ public class Home {
     @Autowired
     private RepositorioDeDetenidos rd;
 
+    @Autowired
+    private RepositorioDeBandas rb;
+
     private String login(Model model, Usuario usuario) {
         if (usuario != null) {
             model.addAttribute("usuario", usuario);
@@ -38,6 +41,7 @@ public class Home {
             model.addAttribute("entidades", re.findAll());
             model.addAttribute("contratos", rc.findAll());
             model.addAttribute("detenidos",rd.findAll());
+            model.addAttribute("bandas",rb.findAll());
             return usuario.getRol().toLowerCase();
         }
         model.addAttribute("error", "No se encontró Código/Password");
